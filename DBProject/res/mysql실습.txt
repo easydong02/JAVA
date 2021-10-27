@@ -1,0 +1,9 @@
+mysql> create table book(
+    -> book_id int primary key auto_increment
+    -> ,book_name varchar(30)
+    -> ,price int default 0
+    -> , pubdate timestamp default now()
+    -> ) default character set utf8;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> notee
