@@ -1,0 +1,62 @@
+<!doctype html>
+ <head>
+  <meta charset="UTF-8">
+  <title>클래스 개념</title>
+  
+ </head>
+ <body>
+ <button onClick="moveAll()">화살 날리기</button>
+ </body>
+</html>
+
+<script>
+//2015 년도에 발표된 ECMAScript(js명칭)자바와 흡사한 class를 지원
+//화살 자체가 아닌, 장차 화살을 만들어 낼 수 있는 틀인 클래스를 정의해보자!!
+//OOP언어 = 객체지향 언어 = 객체가 중심이 되는 언어..
+class Arrow{
+	constructor(x,y,vel,color){//ES에서는 생성자의 명칭이 정해져 있다...
+this.s=document.createElement("span");//프로그래밍적으로 생성
+this.s.innerText="→";//<span>→</spn>
+this.x=x;
+this.y=y;
+this.vel=vel;//속도
+this.color= color;
+//원하는 좌표로 이동
+this.s.style.position="absolute";//절대위치로 지정
+this.s.style.left=this.x+"px";
+this.s.style.top=this.y+"px";
+this.s.style.fontSize=30+"px";
+this.s.style.color = this.color;
+
+
+
+	//생성된 span을 body에 자식요소로 붙이자
+	document.body.appendChild(this.s);
+}
+	 
+	move(){
+	
+	//문서 내의 s라 불리는 녀석의 스타일 위치값중 left를 점점 증가 시키겠다.
+	this.x +=this.vel;
+	this.s.style.left=this.x+"px";
+	
+	}
+	
+}
+/*이 영역은 디자인이 아닌 프로그래밍 영역이다!*/
+//문서 내의 span이라는 태그를 날려보자!
+var a,b;
+
+function moveAll(){
+	a.move();
+	b.move();
+}
+//문서가 로드되면, 그때 init()하겠다..
+window.addEventListener("load",function(){
+
+//alert("문서 로드 완료ㅎㅎ");
+	a = new Arrow(100,200,10,"red");
+	b = new Arrow(250,300,15,"blue");
+
+});
+</script>
